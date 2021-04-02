@@ -12,4 +12,4 @@ versions_dir=$(dirname $0)/../versions
 
 
 export DENO_INSTALL_ROOT=$versions_dir/$version
-$versions_dir/$version/bin/exec_name "$@"
+$versions_dir/$version/bin/$exec_name "$@"
