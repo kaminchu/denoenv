@@ -28,5 +28,5 @@ unzip -d "$tmp_dir" -o "deno.zip"
 chmod +x $tmp_dir/*
 rm deno.zip
 
-tmp/deno compile --allow-run --allow-read --allow-write --allow-net --unstable --importmap=import_map.json --lite --output bin/denoenv src/mod.ts
+tmp/deno compile --allow-run --allow-read --allow-write --allow-net --unstable --importmap=import_map.json --lite --output bin/denoenv ./mod.ts
 rm -rf $tmp_dir

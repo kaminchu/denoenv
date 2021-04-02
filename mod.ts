@@ -6,7 +6,7 @@ import { ensureDir } from "fs/mod.ts";
 const cli = cac("denoenv");
 
 const __dirname = new URL(".", import.meta.url).pathname;
-
+console.log(__dirname);
 // install
 cli
   .command("install [version]", "Install a deno version", {
@@ -33,7 +33,7 @@ cli
       })();
       const url =
         `https://github.com/denoland/deno/releases/download/${version}/deno-${target}.zip`;
-      await download(url, { file: `${__dirname}/deno-${target}.zip`, dir: "." });
+      await download(url, { file: `deno-${target}.zip`, dir: `${__dirname}` });
       await ensureDir(`${__dirname}/versions/${version}`);
       await unZipFromFile(`${__dirname}/deno-${target}.zip`, `${__dirname}/versions/${version}`);
       await Deno.remove(`${__dirname}/deno-${target}.zip`);
