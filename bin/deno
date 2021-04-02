@@ -13,6 +13,6 @@ export DENO_INSTALL_ROOT=$versions_dir/$version
 $versions_dir/$version/deno "$@"
 
 if [ "`echo $@ | grep -E 'install'`" ]; then
-  ls $versions_dir | xargs -I{} ls versions/{}/bin | xargs -I{} cp scripts/deno_scripts_template.sh $(dirname $0)/../bin/$(basename {})
-  chmod +x bin/*
+  ls $versions_dir | xargs -I{} ls $(dirname $0)/../versions/{}/bin | xargs -I{} cp $(dirname $0)/../scripts/deno_scripts_template.sh $(dirname $0)/../bin/$(basename {})
+  chmod +x $(dirname $0)/../bin/*
 fi
