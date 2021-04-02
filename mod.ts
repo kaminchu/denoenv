@@ -6,7 +6,7 @@ import { ensureDir } from "fs/mod.ts";
 const cli = cac("denoenv");
 
 const __dirname = new URL(".", import.meta.url).pathname;
-console.log(__dirname);
+
 // install
 cli
   .command("install [version]", "Install a deno version", {
