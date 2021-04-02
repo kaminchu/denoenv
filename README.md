@@ -4,11 +4,6 @@
 
 ## Installation
 
- ```console
-  $ git clone https://github.com/kaminchu/denoenv.git ~/.denoenv
-  ```
-### Manual
-
 1. Check out denoenv into any path (here is `${HOME}/.denoenv`)
 
  ```console
