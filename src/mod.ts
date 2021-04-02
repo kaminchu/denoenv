@@ -5,6 +5,8 @@ import { unZipFromFile } from "zip";
 import { ensureDir } from "fs/mod.ts";
 const cli = cac("denoenv");
 
+const __dirname = new URL(".", import.meta.url).pathname;
+
 // install
 cli
   .command("install [version]", "Install a deno version", {
@@ -31,13 +33,13 @@ cli
       })();
       const url =
         `https://github.com/denoland/deno/releases/download/${version}/deno-${target}.zip`;
-      await download(url, { file: `deno-${target}.zip`, dir: "." });
-      await ensureDir(`versions/${version}`);
-      await unZipFromFile(`deno-${target}.zip`, `versions/${version}`);
-      await Deno.remove(`deno-${target}.zip`);
+      await download(url, { file: `${__dirname}/deno-${target}.zip`, dir: "." });
+      await ensureDir(`${__dirname}/versions/${version}`);
+      await unZipFromFile(`${__dirname}/deno-${target}.zip`, `${__dirname}/versions/${version}`);
+      await Deno.remove(`${__dirname}/deno-${target}.zip`);
 
       // deno install directory
-      await ensureDir(`versions/${version}/bin`);
+      await ensureDir(`${__dirname}/versions/${version}/bin`);
     }
   });
 
@@ -48,7 +50,7 @@ cli
   })
   .action(async (version) => {
     if (version) {
-      await Deno.writeTextFile("version", version);
+      await Deno.writeTextFile(`${__dirname}/version`, version);
     } else {
       console.log(await Deno.readTextFile("version"));
     }
