@@ -1,0 +1,16 @@
+{
+  "imports": {
+    "cac": "https://unpkg.com/cac@6.7.2/mod.ts",
+    "dos": "https://deno.land/x/dos/mod.ts",
+    "download": "https://deno.land/x/download/mod.ts",
+    "fs/": "https://deno.land/std/fs/",
+    "zip": "https://deno.land/x/zip/mod.ts"
+  },
+  "hash": {
+    "cac": "ccd7e4d4fb93f15fccdc6972f9574223ebc5345388b8c8bccec610180c79bc2a",
+    "dos": "6d32bb70692cbc4573e805e33c5336123a36613bba688806df13bd6fbd85203e",
+    "download": "8a1379bc8fc26cca3467453197607027723cea02fe7b9f038d30832825675c92",
+    "zip": "2f0dbdba4b5e7f2be59c32703773f2986c79ee9e3d3330248f459d6e02b39f5a",
+    "fs/": "019ac757ed33f1d51f5233d5a322156e556e44d309ed4528b5d6658705576619"
+  }
+}

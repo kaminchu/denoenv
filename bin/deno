@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+version=$(cat $(dirname $0)/../version)
+if [ -e $(pwd)/.deno-version ]; then
+  version=$(cat $(pwd)/.deno-version)
+fi
+
+versions_dir=$(dirname $0)/../versions
+
+
+export DENO_INSTALL_ROOT=$versions_dir/$version
+$versions_dir/$version/deno "$@"
+
+if [ "`echo $@ | grep -E 'install'`" ]; then
+  ls $versions_dir | xargs -I{} ls versions/{}/bin | xargs -I{} cp scripts/deno_scripts_template.sh $(dirname $0)/../bin/$(basename {})
+  chmod +x bin/*
+fi

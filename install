@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+version=v1.8.2
+
+if [ "$OS" = "Windows_NT" ]; then
+  target="x86_64-pc-windows-msvc"
+else
+  case $(uname -sm) in
+  "Darwin x86_64") target="x86_64-apple-darwin" ;;
+  "Darwin arm64") target="aarch64-apple-darwin" ;;
+  *) target="x86_64-unknown-linux-gnu" ;;
+  esac
+fi
+
+deno_uri="https://github.com/denoland/deno/releases/download/${version}/deno-${target}.zip"
+
+tmp_dir=tmp
+if [ ! -d "$tmp_dir" ]; then
+  mkdir -p "$tmp_dir"
+fi
+
+curl --fail --location --progress-bar --output "deno.zip" "$deno_uri"
+unzip -d "$tmp_dir" -o "deno.zip"
+chmod +x $tmp_dir/*
+rm deno.zip
+
+tmp/deno compile --allow-run --allow-read --allow-write --allow-net --unstable --importmap=import_map.json --lite --output bin/denoenv src/mod.ts
+rm -rf $tmp_dir

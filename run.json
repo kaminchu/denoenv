@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "deno run --allow-run --allow-read --allow-write --allow-net --unstable --importmap=import_map.json src/mod.ts"
+  }
+}
